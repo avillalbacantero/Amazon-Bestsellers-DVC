@@ -1,7 +1,7 @@
 Amazon-Bestsellers-DVC
 ==============================
 
-This is a personal project to do data and machine learning pipelines, data and model versioning and registry using DVC.
+This is a personal project to create data and machine learning pipelines and perform data and model versioning using DVC.
 
 Project Organization
 ------------
