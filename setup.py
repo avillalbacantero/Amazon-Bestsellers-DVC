@@ -4,7 +4,7 @@ setup(
     name="src",
     packages=find_packages(),
     version="0.1.0",
-    description="This is a personal project to do data and machine learning pipelines, data and model versioning and registry using DVC.",
+    description="This is a personal project to create data and machine learning pipelines and perform data and model versioning using DVC.",
     author="avillalbacantero",
     license="MIT",
 )

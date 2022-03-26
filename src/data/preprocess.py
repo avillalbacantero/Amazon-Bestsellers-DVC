@@ -3,6 +3,7 @@
 import argparse
 import logging
 import string
+import os
 
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -46,6 +47,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     df = pd.read_csv(args.input)
+    
+    # DVC needs that the script creates the output directory
+    OUTPUT_DIR = "./data/preprocessed"
+    if not os.path.exists(OUTPUT_DIR):
+        os.mkdir(OUTPUT_DIR)
 
     logging.info(f"Preprocessing: {args.input}")
     preprocessed_df = preprocess(df)

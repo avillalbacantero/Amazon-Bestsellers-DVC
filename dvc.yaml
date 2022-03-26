@@ -1,0 +1,8 @@
+stages:
+  preprocess:
+    cmd: python src/data/preprocess.py --input ./data/external/dataset.csv
+    deps:
+    - data/external/dataset.csv
+    - src/data/preprocess.py
+    outs:
+    - data/preprocessed

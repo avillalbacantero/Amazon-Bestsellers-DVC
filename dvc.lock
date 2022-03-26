@@ -1,0 +1,16 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/data/preprocess.py --input ./data/external/dataset.csv
+    deps:
+    - path: data/external/dataset.csv
+      md5: fa9191cea007ed50aeb0f4ebfe0f4295
+      size: 51161
+    - path: src/data/preprocess.py
+      md5: 19630e9db9966b04f7b00a7bb31ea7bf
+      size: 1828
+    outs:
+    - path: data/preprocessed
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
