@@ -1,0 +1,2 @@
+These notebooks have been downloaded from Kaggle, so I want to give credit to its authors by linking the original notebook:
+- amazon-bestselling-books-eda-and-price-prediction.ipynb -> https://www.kaggle.com/code/thomaskonstantin/amazon-bestselling-books-eda-and-price-prediction
