@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -13,6 +14,17 @@ def preprocessed_test_dataset() -> pd.DataFrame:
     """A pd.DataFrame with the Amazon-Best-Sellers-Books preprocessed
     test dataset.
     """
-    return pd.read_csv(
-        "./tests/test_data/ground_truth_preprocessed_test_dataset.csv", index_col=0
-    )
+    return pd.read_csv("./tests/test_data/preprocessed_test_dataset.csv")
+
+
+@pytest.fixture
+def featurized_test_dataset() -> np.ndarray:
+    """A np.ndarray with the features extracted from the 
+    Amazon-Best-Sellers-Books test dataset. 15 components for feature
+    decomposition with Truncated SVD were used.
+
+    Returns:
+        np.ndarray: The array with the extracted features.
+    """
+    
+    return np.load("./tests/test_data/featurized_test_dataset.npy")
