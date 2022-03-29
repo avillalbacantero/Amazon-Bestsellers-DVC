@@ -27,4 +27,4 @@ def featurized_test_dataset() -> np.ndarray:
         np.ndarray: The array with the extracted features.
     """
     
-    return np.load("./tests/test_data/featurized_test_dataset.npy")
+    return np.load("./tests/test_data/featurized_test_dataset.npz")
