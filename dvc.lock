@@ -7,10 +7,10 @@ stages:
       md5: fa9191cea007ed50aeb0f4ebfe0f4295
       size: 51161
     - path: src/data/preprocess.py
-      md5: 19630e9db9966b04f7b00a7bb31ea7bf
-      size: 1828
+      md5: 0e173b5ab6356245a4daece564e1e7fc
+      size: 2254
     outs:
     - path: data/preprocessed
-      md5: d751713988987e9331980363e24189ce.dir
-      size: 0
-      nfiles: 0
+      md5: 0755d127bb690acd6af80658562f62ca.dir
+      size: 60405
+      nfiles: 1
