@@ -5,10 +5,10 @@ This is a personal project to create data and machine learning pipelines and per
 
 TODO's
 ------------
-- Implement `src/models/train_model.py`
 - Create the data transformation and training pipelines: preprocessing -> featurization -> split -> train ML model
 - Version and push trained model to AWS/S3
 - Write README
+- Remove unnecessary files and folders.
 
 Project Organization
 ------------
