@@ -33,7 +33,7 @@ if __name__ == "__main__":
     logging.info(f"Training data {args.train_data} successfully loaded")
 
     # DVC needs that the script creates the output directory
-    OUTPUT_DIR = "./data/models"
+    OUTPUT_DIR = "./models"
     if not os.path.exists(OUTPUT_DIR):
         os.mkdir(OUTPUT_DIR)
 
