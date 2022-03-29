@@ -14,3 +14,20 @@ stages:
       md5: 0755d127bb690acd6af80658562f62ca.dir
       size: 60405
       nfiles: 1
+  featurization:
+    cmd: python src/features/featurize.py --input ./data/preprocessed/preprocessed_dataset.csv
+    deps:
+    - path: data/preprocessed/preprocessed_dataset.csv
+      md5: dfa9fd13e7c40d5e5922f6c34d19cb02
+      size: 60405
+    - path: src/features/featurize.py
+      md5: d30d0827da30fc91685558d9fadf24f2
+      size: 3402
+    params:
+      params.yaml:
+        featurization.truncatedSVD_number_of_components: 180
+    outs:
+    - path: data/featurized
+      md5: e0d32e1dc4dee3c8f9ea4e72221eb888.dir
+      size: 492249
+      nfiles: 1

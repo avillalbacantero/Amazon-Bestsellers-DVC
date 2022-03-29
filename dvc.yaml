@@ -6,3 +6,12 @@ stages:
     - src/data/preprocess.py
     outs:
     - data/preprocessed
+  featurization:
+    cmd: python src/features/featurize.py --input ./data/preprocessed/preprocessed_dataset.csv
+    deps:
+    - data/preprocessed/preprocessed_dataset.csv
+    - src/features/featurize.py
+    params:
+    - featurization.truncatedSVD_number_of_components
+    outs:
+    - data/featurized
