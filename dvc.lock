@@ -48,3 +48,17 @@ stages:
       md5: 43ff07fe1f8c84a7eed015f3988055d4.dir
       size: 732326
       nfiles: 2
+  training:
+    cmd: python src/models/train_model.py --train_data ./data/processed/train_dataset.npz
+    deps:
+    - path: data/processed/train_dataset.npz
+      md5: 98c33cd55e0bc15e2b24318214d442e9
+      size: 546364
+    - path: src/models/train_model.py
+      md5: 641cba32b34185197247ce432feb617f
+      size: 1663
+    outs:
+    - path: models
+      md5: b8817626a15055f0b4e29dbb1e056d8b.dir
+      size: 3550
+      nfiles: 1

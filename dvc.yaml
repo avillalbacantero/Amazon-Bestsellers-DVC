@@ -24,3 +24,10 @@ stages:
     - split.train_percentage
     outs:
     - data/processed
+  training:
+    cmd: python src/models/train_model.py --train_data ./data/processed/train_dataset.npz
+    deps:
+    - data/processed/train_dataset.npz
+    - src/models/train_model.py
+    outs:
+    - models
