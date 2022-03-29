@@ -34,7 +34,9 @@ def preprocess(df: pd.DataFrame) -> pd.DataFrame:
     df["Negative Sentiment"] = df.Sentiment.apply(lambda x: x["neg"])
     df["Compound Sentiment"] = df.Sentiment.apply(lambda x: x["compound"])
     df = df.drop(columns=["Sentiment"])
-    logging.debug("Sentiment and Compound sentiment have been calculated over the `Name` column.")
+    logging.debug(
+        "Sentiment and Compound sentiment have been calculated over the `Name` column."
+    )
 
     return df
 
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process the dataset.")
     parser.add_argument("--input", type=str, help="Path/to the input CSV to process.")
     args = parser.parse_args()
-    
+
     logging.info(f"Preprocessing {args.input}")
     df = pd.read_csv(args.input)
 
