@@ -15,3 +15,12 @@ stages:
     - featurization.truncatedSVD_number_of_components
     outs:
     - data/featurized
+  split:
+    cmd: python src/splits/split_train_test.py --features ./data/featurized/featurized_dataset.npz
+    deps:
+    - data/featurized/featurized_dataset.npz
+    - src/splits/split_train_test.py
+    params:
+    - split.train_percentage
+    outs:
+    - data/processed

@@ -31,3 +31,20 @@ stages:
       md5: e0d32e1dc4dee3c8f9ea4e72221eb888.dir
       size: 492249
       nfiles: 1
+  split:
+    cmd: python src/splits/split_train_test.py --features ./data/featurized/featurized_dataset.npz
+    deps:
+    - path: data/featurized/featurized_dataset.npz
+      md5: 8a8867e5476e991ec46ac480b804a1d0
+      size: 492249
+    - path: src/splits/split_train_test.py
+      md5: 5fafc96704e0ceee789664e534f3c39d
+      size: 1902
+    params:
+      params.yaml:
+        split.train_percentage: 0.75
+    outs:
+    - path: data/processed
+      md5: 43ff07fe1f8c84a7eed015f3988055d4.dir
+      size: 732326
+      nfiles: 2
