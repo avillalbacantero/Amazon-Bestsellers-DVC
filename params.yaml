@@ -3,3 +3,4 @@ featurization:
   truncatedSVD_number_of_components: 180
 split:
   train_percentage: 0.75
+training:
