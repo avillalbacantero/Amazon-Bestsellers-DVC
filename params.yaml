@@ -4,3 +4,4 @@ featurization:
 split:
   train_percentage: 0.75
 training:
+evaluation:
