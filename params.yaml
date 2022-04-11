@@ -1,6 +1,6 @@
 preprocessing:
 featurization:
-  truncatedSVD_number_of_components: 50
+  truncatedSVD_number_of_components: 25
 split:
   train_percentage: 0.75
 training:
