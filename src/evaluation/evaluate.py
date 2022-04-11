@@ -2,6 +2,7 @@
 
 import argparse
 from joblib import load
+import json
 import logging
 import yaml
 
@@ -39,21 +40,40 @@ if __name__ == "__main__":
     test_predictions = trained_model.predict(test_features)
     logging.info(f"Test set predictions done. Evaluating the model...")
     
-    # Compute metrics
+    # Compute metrics and dump them to a JSON file
     mse = mean_squared_error(test_label, test_predictions)
     mae = mean_absolute_error(test_label, test_predictions) 
+    
     logging.info(f"MSE (on test set) = {mse}")
     logging.info(f"MAE (on test set) = {mae}")
     
-    # Plot predicted vs. actual
-    plt.figure(1)
+    scores = {"MSE": mse, "MAE": mae}
+    with open("./reports/scores.json", 'w') as f:
+        json.dump(scores, f, indent=4)
+    
+    # Plot predicted vs. actual and dump the values to a JSON file
+    plt.figure()
     plt.title("Actual vs. Predicted Book Prices")
     sns.regplot(x=test_label, y=test_predictions)
     plt.xlabel("Actual Price")
     plt.ylabel("Predicted Price")
+    max_price = max(test_label) if max(test_label) >= max(test_predictions) else max(test_predictions)
+    plt.xlim((0, max_price))
+    plt.ylim((0, max_price))
+    
+    label_predictions = list()
+    for i in range(len(test_label)):
+        test_label_i = test_label[i]
+        test_prediction_i = test_predictions[i]
+        label_prediction = {"ground_truth": int(test_label_i), "predicted": int(test_prediction_i)}
+        label_predictions.append(label_prediction)
+        
+    json_predictions = {"preds": label_predictions}
+    with open("./reports/predictions.json", 'w') as f:
+        json.dump(json_predictions, f, indent=4)
     
     # Plot Residuals    
-    plt.figure(2)
+    plt.figure()
     plt.title("Residual Plot")
     sns.residplot(x=test_predictions, y=test_label)
     plt.xlabel("Actual Price")
