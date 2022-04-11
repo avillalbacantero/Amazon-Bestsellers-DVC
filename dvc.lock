@@ -25,18 +25,18 @@ stages:
       size: 3402
     params:
       params.yaml:
-        featurization.truncatedSVD_number_of_components: 10
+        featurization.truncatedSVD_number_of_components: 25
     outs:
     - path: data/featurized
-      md5: edfba80db9a8638f36233c8176efbf5d.dir
-      size: 30973
+      md5: 4c0f3f63315ce3fdab787bceebdf9a17.dir
+      size: 71660
       nfiles: 1
   split:
     cmd: python src/splits/split_train_test.py --features ./data/featurized/featurized_dataset.npz
     deps:
     - path: data/featurized/featurized_dataset.npz
-      md5: 8f583d0f34826657444d5c85a162192f
-      size: 30973
+      md5: 3419a322840d0bbe0baa3b806912fe1b
+      size: 71660
     - path: src/splits/split_train_test.py
       md5: 5fafc96704e0ceee789664e534f3c39d
       size: 1902
@@ -45,40 +45,40 @@ stages:
         split.train_percentage: 0.75
     outs:
     - path: data/processed
-      md5: bdbaa59b96e0b1c0b68990ec11c4ed8f.dir
-      size: 35424
+      md5: 8f7d92a56fb4eabed8df2baf121b91ca.dir
+      size: 87162
       nfiles: 2
   training:
     cmd: python src/models/train_model.py --train_data ./data/processed/train_dataset.npz
     deps:
     - path: data/processed/train_dataset.npz
-      md5: 1cd8f2e3b52e33b313343ab2ed43aff1
-      size: 24495
+      md5: 88d6dd788a70347ccb63452c8d9b8a7f
+      size: 62216
     - path: src/models/train_model.py
       md5: 641cba32b34185197247ce432feb617f
       size: 1663
     outs:
     - path: models
-      md5: d1fdf27a7e574c20585d5b1a8b665998.dir
-      size: 830
+      md5: a009d224cd7c5159ef0bc6ebb97f5344.dir
+      size: 1070
       nfiles: 1
   evaluation:
     cmd: python src/evaluation/evaluate.py --test_data data/processed/test_dataset.npz
       --model models/linear_regression.joblib
     deps:
     - path: data/processed/test_dataset.npz
-      md5: 9ecb87d76b2475e6f6c2d58ba07b534e
-      size: 10929
+      md5: 29c567f335b93a8327dcb5fea0da2b3a
+      size: 24946
     - path: models/linear_regression.joblib
-      md5: b9111db06e9ba18e87aab7dfd1eab0c7
-      size: 830
+      md5: 65b1f79835ecc407ca3cdf1cfd053292
+      size: 1070
     - path: src/evaluation/evaluate.py
       md5: 5af7dfa5a14207019df533e727a13a7c
       size: 2926
     outs:
     - path: reports/predictions.json
-      md5: 5aa32af1b3278447baf93e1a27def148
-      size: 11110
+      md5: c9bb245a5943580463b447051d408841
+      size: 11109
     - path: reports/scores.json
-      md5: 4770e25f44b284034a34cdc87cca632b
+      md5: a677ad39a27f241eb088d0d45e266bf8
       size: 62
