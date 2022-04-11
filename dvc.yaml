@@ -44,3 +44,5 @@ stages:
     plots:
     - reports/predictions.json:
         cache: false
+        x: ground_truth
+        y: predicted
