@@ -62,3 +62,23 @@ stages:
       md5: b8817626a15055f0b4e29dbb1e056d8b.dir
       size: 3550
       nfiles: 1
+  evaluation:
+    cmd: python src/evaluation/evaluate.py --test_data data/processed/test_dataset.npz
+      --model models/linear_regression.joblib
+    deps:
+    - path: data/processed/test_dataset.npz
+      md5: b5bc8817f01da2008b2cf165fd067e9f
+      size: 185962
+    - path: models/linear_regression.joblib
+      md5: 7330f2c57ee616f630e0be10f96309f2
+      size: 3550
+    - path: src/evaluation/evaluate.py
+      md5: 5af7dfa5a14207019df533e727a13a7c
+      size: 2926
+    outs:
+    - path: reports/predictions.json
+      md5: ec27bc52286f06048ce9a47fdd9395ed
+      size: 11091
+    - path: reports/scores.json
+      md5: 17833f208a173178b5839766556c409c
+      size: 63

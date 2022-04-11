@@ -31,3 +31,16 @@ stages:
     - src/models/train_model.py
     outs:
     - models
+  evaluation:
+    cmd: python src/evaluation/evaluate.py --test_data data/processed/test_dataset.npz
+      --model models/linear_regression.joblib
+    deps:
+    - data/processed/test_dataset.npz
+    - models/linear_regression.joblib
+    - src/evaluation/evaluate.py
+    metrics:
+    - reports/scores.json:
+        cache: false
+    plots:
+    - reports/predictions.json:
+        cache: false
